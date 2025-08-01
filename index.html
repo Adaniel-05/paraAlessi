@@ -15,16 +15,17 @@
       background: #fce4ec;
       font-family: 'Arial', sans-serif;
       overflow: hidden;
+      height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
+      align-items: flex-end;
+      padding-bottom: 60px;
       position: relative;
     }
 
     #heart {
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
       cursor: pointer;
       transition: transform 0.15s, filter 0.15s;
       user-select: none;
@@ -63,8 +64,8 @@
 
     @media (max-width: 600px) {
       #heart {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
       }
 
       .message {
