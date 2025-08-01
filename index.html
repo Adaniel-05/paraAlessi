@@ -18,8 +18,7 @@
       height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
-      padding-bottom: 60px;
+      align-items: center;  /* ← centrado vertical */
       position: relative;
     }
 
@@ -129,8 +128,8 @@
       const heart = document.getElementById("heart");
       const rect = heart.getBoundingClientRect();
 
-      const offsetX = Math.floor(Math.random() * 60) - 30; // entre -30 y +30 px
-      const offsetY = -60; // encima del corazón
+      const offsetX = Math.floor(Math.random() * 60) - 30;
+      const offsetY = -60;
 
       msg.style.left = `${rect.left + rect.width / 2 + offsetX}px`;
       msg.style.top = `${rect.top + offsetY}px`;
