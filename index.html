@@ -19,6 +19,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      position: relative;
     }
 
     #heart {
@@ -27,6 +28,7 @@
       cursor: pointer;
       transition: transform 0.15s, filter 0.15s;
       user-select: none;
+      z-index: 1;
     }
 
     #heart:active {
@@ -45,6 +47,7 @@
       white-space: nowrap;
       animation: floatUp 2.5s forwards ease-out;
       pointer-events: none;
+      z-index: 0;
     }
 
     @keyframes floatUp {
@@ -77,30 +80,31 @@
 
   <script>
     const messages = [
-  "Amo tu voz",
-  "Eres increíble.",
-  "Me emociona tus mensajes",
-  "Quiero conocerte mas",
-  "Voy a apoyarte siempre.",
-  "Me interesas mucho.",
-  "Quiero ver anime contigo.",
-  "Haces mi dia mejor.",
-  "Amo tu voz.",
-  "Eres especial.",
-  "Me encariñe contigo demasiado.",
-  "Admiro tu responsabilidad.",
-  "Tan tierna como fuerte.",
-  "Contigo todo es mejor.",
-  "Tu voz me tranquiliza.",
-  "Quiero que esto dure a futuro.",
-  "Sonrio con tus bromas.",
-  "Me inspiras a darte detalles.",
-  "Quiero valorarte como te mereces.",
-  "Quiero ver tus bonitos ojos.",
-  "Me haces querer ser mejor.",
-  "Te quiero un monton.",
-  "Vales totalmente la pena siempre."
-];
+      "Amo tu voz",
+      "Eres increíble.",
+      "Me emociona tus mensajes",
+      "Quiero conocerte más",
+      "Voy a apoyarte siempre.",
+      "Me interesas mucho.",
+      "Quiero ver anime contigo.",
+      "Haces mi día mejor.",
+      "Amo tu voz.",
+      "Eres especial.",
+      "Me encariñé contigo demasiado.",
+      "Admiro tu responsabilidad.",
+      "Tan tierna como fuerte.",
+      "Contigo todo es mejor.",
+      "Tu voz me tranquiliza.",
+      "Quiero que esto dure a futuro.",
+      "Sonrío con tus bromas.",
+      "Me inspiras a darte detalles.",
+      "Quiero valorarte como te mereces.",
+      "Quiero ver tus bonitos ojos.",
+      "Me haces querer ser mejor.",
+      "Te quiero un montón.",
+      "Vales totalmente la pena siempre."
+    ];
+
     while (messages.length < 23) {
       messages.push(`Mensaje lindo número ${messages.length + 1}`);
     }
@@ -121,15 +125,14 @@
       msg.className = "message";
       msg.textContent = text;
 
-      const padding = 40;
-      const maxX = window.innerWidth - 160;
-      const maxY = window.innerHeight - 160;
+      const heart = document.getElementById("heart");
+      const rect = heart.getBoundingClientRect();
 
-      const x = Math.floor(Math.random() * (maxX - padding)) + padding;
-      const y = Math.floor(Math.random() * (maxY - padding)) + padding;
+      const offsetX = Math.floor(Math.random() * 60) - 30; // entre -30 y +30 px
+      const offsetY = -60; // encima del corazón
 
-      msg.style.left = `${x}px`;
-      msg.style.top = `${y}px`;
+      msg.style.left = `${rect.left + rect.width / 2 + offsetX}px`;
+      msg.style.top = `${rect.top + offsetY}px`;
 
       document.body.appendChild(msg);
 
@@ -139,3 +142,4 @@
 
 </body>
 </html>
+
